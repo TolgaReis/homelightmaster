@@ -3,11 +3,7 @@ from mqtt_handler import MQTTHandler
 
 app = Flask(__name__)
 
-mqtt_broker_host = "localhost"
-mqtt_broker_port = 1883
-mqtt_topic = "/sensor/data"
-
-mqtt_handler = MQTTHandler(mqtt_broker_host, mqtt_broker_port, mqtt_topic)
+mqtt_handler = MQTTHandler()
 
 
 @app.route('/api/latest_mqtt_messages', methods=['GET'])

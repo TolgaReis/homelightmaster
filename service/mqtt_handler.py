@@ -1,11 +1,14 @@
+# mqtt_handler.py
+
 import paho.mqtt.client as mqtt
+from config.config import Config
 
 
 class MQTTHandler:
-    def __init__(self, host, port, topic):
-        self.host = host
-        self.port = port
-        self.topic = topic
+    def __init__(self):
+        self.host = Config.MQTT_BROKER_HOST
+        self.port = Config.MQTT_BROKER_PORT
+        self.topic = Config.MQTT_TOPIC
         self.latest_messages = []
         self.client = mqtt.Client()
         self.client.on_message = self.on_message
