@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    ports:
+      - "1883:1883"
+    volumes:
+      - mosquitto_data:/mosquitto/data
+      - mosquitto_log:/mosquitto/log
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+volumes:
+  mongodb_data:
+  mosquitto_data:
+  mosquitto_log:
