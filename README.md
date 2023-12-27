@@ -1,10 +1,10 @@
 # Infra
 
-Infra contains Terraform configurations to provision Docker containers MongoDB table and Mosquitto.
+Infra contains Docker compose and config files to provision Docker containers MongoDB and Mosquitto.
 
 # Service
 
-Service is designed to read sensor data, add timestamp and status(ALARM, NORMAL) parameters then save it to MongoDB.
+Service is designed to read sensor data by subscribing to MQTT topic, add timestamp and status(ALARM, NORMAL) parameters then save it to MongoDB.
 
 # UI
 
