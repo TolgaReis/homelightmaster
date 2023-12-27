@@ -1,3 +1,9 @@
+#include <WiFi.h>
+
+// WiFi settings
+const char *ssid = "SSID";
+const char *password = "PASS";
+
 // Distance sensor pins
 const int trigPin = 9;  // Trig
 const int echoPin = 10; // Echo
@@ -12,6 +18,8 @@ void setup()
     Serial.begin(9600); // Start the serial communication
     pinMode(trigPin, OUTPUT);
     pinMode(echoPin, INPUT);
+
+    connectToWiFi();
 }
 
 void loop()
@@ -53,4 +61,21 @@ int calculateDistance()
 int readLightDependentResistence()
 {
     return analogRead(ldrPin);
+}
+
+void connectToWiFi()
+{
+    Serial.print("WiFi connecting...");
+
+    WiFi.begin(ssid, password);
+
+    while (WiFi.status() != WL_CONNECTED)
+    {
+        delay(1000);
+        Serial.print(".");
+    }
+
+    Serial.println("\nWiFi connection successful!");
+    Serial.print("IP Address: ");
+    Serial.println(WiFi.localIP());
 }
