@@ -1,3 +1,4 @@
 *.
 infra/.*
 infra/terraform.exe
+**pycache**
