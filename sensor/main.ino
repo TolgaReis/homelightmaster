@@ -58,7 +58,7 @@ int calculateDistance()
     return duration * soundSpeed / 2;
 }
 
-int readLightDependentResistence()
+int readLDR()
 {
     return analogRead(ldrPin);
 }
