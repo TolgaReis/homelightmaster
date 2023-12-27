@@ -20,12 +20,11 @@ UI is a user interface designed to manage IoT devices and display notifications 
   - Receive timely notifications in case of alarm conditions or critical events.
   - Customizable alert settings for different types of alarms.
 
-# IoT
+# Sensor
 
 It is designed to create home automation using an ESP32 microcontroller with light and distance sensors. The data obtained from these sensors will be sent to the service using the MQTT protocol via Mosquitto. The project can be used to measure the ambient light in the home and determine whether the store curtain is open or closed.
 
 ## Hardware Requirements
 - ESP32 microcontroller
-- Light sensor
-- Distance sensor
-- Store curtain motor (optional, for controlling the curtain state)
+- KY-018 LDR Light Sensor Card
+- HC-SR04 Ultrasonic Distance Sensor
