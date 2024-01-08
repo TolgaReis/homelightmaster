@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask SocketIO Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script type="text/javascript">
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        socket.on('connect', function() {
+            socket.emit('start_updates');
+        });
+
+        socket.on('update_data', function(data) {
+            // Gelen veriyi ekranda göster
+            var statusElement = document.getElementById('status');
+            var lightElement = document.getElementById('light');
+            var imageElement = document.getElementById('status-image');
+
+            // Duruma göre resmi güncelle
+            if (data.status === 'CLOSE') {
+                imageElement.src = '/static/close.png';
+                statusElement.innerHTML = 'Close the curtains!';
+            } else if (data.status === 'OPEN') {
+                imageElement.src = '/static/open.gif';
+                statusElement.innerHTML = 'Open the curtains!';
+            } else if (data.status === 'NO_ACTION') {
+                imageElement.src = '/static/dt.gif';
+                statusElement.innerHTML = "Do not touch the curtains!";
+            }
+
+            // Data.light'i sol tarafta büyük punto ile göster
+            lightElement.innerHTML = data.light;
+        });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        #status-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        #light {
+            font-size: 36px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sunlight Tracking</h1>
+    <p id="status"></p>
+    <p id="light"></p>
+    <img id="status-image" src="" alt="Status Image">
+</body>
+</html>
