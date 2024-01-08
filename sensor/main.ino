@@ -10,11 +10,11 @@ const int mqttPort = 1883;
 const char *mqttTopic = "/sensor/data";
 
 // Distance sensor pins
-const int trigPin = 9;  // Trig
-const int echoPin = 10; // Echo
+const int trigPin = 2; // Trig
+const int echoPin = 4; // Echo
 
 // Light sensor pin
-const int ldrPin = A0; // analog pin that LDR sensor connected
+const int ldrPin = 15; // analog pin that LDR sensor connected
 
 const int soundSpeed = 0.034;
 
